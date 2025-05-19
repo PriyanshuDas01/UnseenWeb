@@ -13,24 +13,30 @@ describe('Unseen Component', () => {
 
   it('renders loading state initially', () => {
     render(
-      <UnseenProvider apiKey="test-key">
-        <Unseen text="Test text" />
+      <UnseenProvider 
+        apiKey="test-key"
+        customPrompt="Transform this text: {text}"
+      >
+        <Unseen>Test text</Unseen>
       </UnseenProvider>
     );
-    expect(screen.getByText('Loading...')).toBeInTheDocument();
+    expect(screen.getByText('Transforming...')).toBeInTheDocument();
   });
 
   it('renders error state when API call fails', async () => {
     (global.fetch as jest.Mock).mockRejectedValueOnce(new Error('API Error'));
 
     render(
-      <UnseenProvider apiKey="test-key">
-        <Unseen text="Test text" />
+      <UnseenProvider 
+        apiKey="test-key"
+        customPrompt="Transform this text: {text}"
+      >
+        <Unseen>Test text</Unseen>
       </UnseenProvider>
     );
 
     await waitFor(() => {
-      expect(screen.getByText('Error transforming text: API Error')).toBeInTheDocument();
+      expect(screen.getByText('Test text')).toBeInTheDocument();
     });
   });
 
@@ -51,8 +57,11 @@ describe('Unseen Component', () => {
     });
 
     render(
-      <UnseenProvider apiKey="test-key">
-        <Unseen text="Test text" />
+      <UnseenProvider 
+        apiKey="test-key"
+        customPrompt="Transform this text: {text}"
+      >
+        <Unseen>Test text</Unseen>
       </UnseenProvider>
     );
 
@@ -80,14 +89,26 @@ describe('Unseen Component', () => {
     render(
       <UnseenProvider 
         apiKey="test-key"
+        customPrompt="Transform this text: {text}"
         utmConfig={{
-          source: 'test',
-          medium: 'test',
-          campaign: 'test',
-          dynamicText: true
+          enabled: true,
+          dynamicText: {
+            source: {
+              template: "test",
+              variables: ["source"]
+            },
+            medium: {
+              template: "test",
+              variables: ["medium"]
+            },
+            campaign: {
+              template: "test",
+              variables: ["campaign"]
+            }
+          }
         }}
       >
-        <Unseen text="Test text" />
+        <Unseen>Test text</Unseen>
       </UnseenProvider>
     );
 
