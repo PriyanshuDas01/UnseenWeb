@@ -168,13 +168,16 @@ The package supports all standard UTM parameters:
 - `utm_content`: Content identifier
 - `utm_term`: Search terms
 
-## Contributing
+# License
+This project is licensed under the MIT License. You are free to use, modify, and distribute this software, provided that:
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+The original copyright notice and license are included.
 
-## License
+Proper attribution is given to the original author(s) in any distributed or derivative works.
 
-MIT
+For more details, refer to the LICENSE file in the repository.
+
+Feel free to customize these sections further to align with your project's specific requirements.
 
 ## Support
 
@@ -182,10 +185,6 @@ For support, please open an issue in the GitHub repository.
 
 ## Author
 
-[Your Name]
+Priyanshu Das
+Github:-priyashudas01
 
-## Acknowledgments
-
-- OpenRouter API for AI capabilities
-- React community for the amazing framework
-- All contributors and users of this package 
