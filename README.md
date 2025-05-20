@@ -35,6 +35,32 @@ function App() {
 }
 ```
 
+## Usage with UTM Parameters
+
+```tsx
+import { UnseenProvider, Unseen } from 'notsounusual';
+
+function App() {
+  const utmConfig = {
+    utm_source: 'facebook',
+    utm_medium: 'social',
+    utm_campaign: 'summer_sale',
+    utm_content: 'sports_shoes'
+  };
+
+  return (
+    <UnseenProvider 
+      apiKey="your-openrouter-api-key"
+      utmConfig={utmConfig}
+    >
+      <h1>
+        <Unseen>This text will be transformed based on UTM parameters</Unseen>
+      </h1>
+    </UnseenProvider>
+  );
+}
+```
+
 ## Test Application
 
 The package includes a test application in the `test` directory that demonstrates the functionality of `notsounusual`. This test app is particularly useful for:
@@ -107,32 +133,6 @@ The package uses the `meta-llama/llama-3.3-8b-instruct:free` model from OpenRout
 - Context-aware responses
 - Support for complex prompts
 - Free tier availability
-
-## Usage with UTM Parameters
-
-```tsx
-import { UnseenProvider, Unseen } from 'notsounusual';
-
-function App() {
-  const utmConfig = {
-    utm_source: 'facebook',
-    utm_medium: 'social',
-    utm_campaign: 'summer_sale',
-    utm_content: 'sports_shoes'
-  };
-
-  return (
-    <UnseenProvider 
-      apiKey="your-openrouter-api-key"
-      utmConfig={utmConfig}
-    >
-      <h1>
-        <Unseen>This text will be transformed based on UTM parameters</Unseen>
-      </h1>
-    </UnseenProvider>
-  );
-}
-```
 
 ## Props
 
